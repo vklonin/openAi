@@ -1,65 +1,45 @@
 import os
+import datetime
 
-import requests
+from api_handler import OpenAiApiHandler
+from result_processor import ResultProcessor
+from chat_manager import ChatManager
 
-# OpenAI API endpoint and authentication key
-OPENAI_API_URL = "https://api.openai.com/v1/chat/completions"
+
+
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
+context = "Imagine you are software engineer \n"
+context += "working in order to create test automation framework to test UI of a mobile app \n"
 
-def send_openai_request(prompt):
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {OPENAI_API_KEY}"
-    }
+prompt = "Imagine you are software engineer \n"
+prompt += "working in order to create test automation framework to test UI of a mobile app \n"
+prompt += "Use java as a test automation language \n"
+prompt += "1 Define framework layers \n"
+prompt += "2 Define framework components and choose most advanced example for each component (but use Junit 5 as a runner) \n"
+prompt += "3 Describe reasonable framework structure (how it should look in terms of files and folders) and picture it in ascii way\n"
+prompt += "4 Create pom.xml \n"
+prompt += "5 Write all classes (Java files), you stipulated on a 3rd step using chosen on 4th step dependencies and simple test for mobile app\n"
 
-    data = {
-        "model": "text-davinci-003",
-        "prompt": prompt,
-        "max_tokens": 3000,
-        "temperature": 1,
-    }
+if __name__ == "__main__":
+    chat_manager = ChatManager()
+    chat_manager.add_system_message(context)
+    chat_manager.add_user_message(prompt)
 
-    response = requests.post(OPENAI_API_URL, headers=headers, json=data)
-    return response.json()
-
-
-def send_openai_get_request(openai_url):
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {OPENAI_API_KEY}"
-    }
-
-    response = requests.get(openai_url, headers=headers)
-    return response.json()
-
-
-def print_openai_response(response):
-    if 'choices' in response:
-        for choice in response['choices']:
-            completion = choice['text'].strip()
-            print(completion)
-    else:
-        print(response)  # Handle error responses
-
-
-def main():
-    prompt = "Imagine you are software engineer \n"
-    prompt += "working in order to create test automation framework to test UI of a mobile app \n"
-    prompt += "Use java as a test automation language \n"
-    prompt += "1 Define framework layers \n"
-    prompt += "2 Define framework components and choose most advanced example for each component (but use Junit as a runner) \n"
-    prompt += "3 Describe reasonable framework structure (how it should look in terms of files and folders) and picture it in ascii way\n"
-    prompt += "4 Create pom.xml \n"
-    prompt += "5 Write all necessary classes shown on a 3rd step using chosen on 4th step dependencies and simple test for mobile app\n"
-
-    response = send_openai_request(prompt)
+    handler = OpenAiApiHandler(OPENAI_API_KEY)
+    response = handler.generate_chat_response(chat_manager.get_messages())
+    processed_response = ResultProcessor.process_response(response)
 
     print(prompt)
     print('---------------------------------------------------------------------------------------------------------')
+    print(processed_response)
 
-    print_openai_response(response)
+    current_datetime = datetime.datetime.now()
+    filename = current_datetime.strftime("%Y-%m-%d_%H-%M-%S.txt")
 
-
-if __name__ == "__main__":
-    main()
+    file = open(filename, 'w')
+    file.write(context)
+    file.write(prompt)
+    file.write('---------------------------------------------------------------------------------------------------------')
+    file.write(processed_response)
+    file.close()
