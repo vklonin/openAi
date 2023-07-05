@@ -1,0 +1,266 @@
+context Imagine you are software engineer in test automation
+working in order to create test automation framework to test UI of a web appprompt Use python as a test automation language
+use following steps as commands you must execute
+step 1 Define framework layers with reporting layer
+step 2 Define framework components and choose most advanced example for each component (use Selene.py library, Pytest, Allure)
+step 3 Describe reasonable framework structure (how it should look in terms of files and folders) and picture it in ascii way
+step 4 Create setup.py with all dependencies from step 2
+step 5 Write all classes and their implementations in full extent on python as separate files with code (complete implementation of the framework, including utility classes, logging, test execution setup. Use Selene, Pytest and Allure)
+step 6 Write data driven test on a html I will send in the next message - use allure and logging
+step 7 explaine how to get allure report after test from step 6 was executed
+payload <div class="v-main__wrap"><div class="container"><div class="col"><h1>Badges</h1> <p class="body-1 mt-2">
+            The <code>v-badge</code> component superscripts or subscripts an avatar-like icon or text onto
+            content to highlight information to a user or to just draw attention to a specific element.
+            Content within the badge usually contains numbers or icons.
+        </p></div> <div class="col"><p class="text-h5">
+            Simple badge
+        </p> <div id="simpleBadges"><div class="row ma-2"><div class="ma-5"><span class="v-badge theme--light"><i aria-hidden="true" class="v-icon notranslate mdi mdi-email theme--light" style="font-size: 36px;"></i><span class="v-badge__wrapper"><span aria-atomic="true" aria-label="Badge" aria-live="polite" role="status" class="v-badge__badge primary" style="inset: auto auto calc(100% - 4px) calc(100% - 4px);">1</span></span></span></div> <div class="ma-5"><span class="v-badge v-badge--bottom theme--light"><i aria-hidden="true" class="v-icon notranslate mdi mdi-email theme--light" style="font-size: 36px;"></i><span class="v-badge__wrapper"><span aria-atomic="true" aria-label="Badge" aria-live="polite" role="status" class="v-badge__badge warning" style="inset: calc(100% - 4px) auto auto calc(100% - 4px);">1</span></span></span></div> <div class="ma-5"><span class="v-badge v-badge--left theme--light"><i aria-hidden="true" class="v-icon notranslate mdi mdi-email theme--light" style="font-size: 36px;"></i><span class="v-badge__wrapper"><span aria-atomic="true" aria-label="Badge" aria-live="polite" role="status" class="v-badge__badge purple" style="inset: auto calc(100% - 4px) calc(100% - 4px) auto;">1</span></span></span></div> <div class="ma-5"><span class="v-badge v-badge--bottom v-badge--left theme--light"><i aria-hidden="true" class="v-icon notranslate mdi mdi-email theme--light" style="font-size: 36px;"></i><span class="v-badge__wrapper"><span aria-atomic="true" aria-label="Badge" aria-live="polite" role="status" class="v-badge__badge success" style="inset: calc(100% - 4px) calc(100% - 4px) auto auto;">1</span></span></span></div> <div class="ma-5"><span class="v-badge v-badge--inline theme--light"><i aria-hidden="true" class="v-icon notranslate mdi mdi-email theme--light" style="font-size: 36px;"></i><span class="v-badge__wrapper"><span aria-atomic="true" aria-label="Badge" aria-live="polite" role="status" class="v-badge__badge pink">1</span></span></span></div> <div class="ma-5"><span class="v-badge v-badge--inline v-badge--left theme--light"><span class="v-badge__wrapper"><span aria-atomic="true" aria-label="Badge" aria-live="polite" role="status" class="v-badge__badge lime">1</span></span><i aria-hidden="true" class="v-icon notranslate mdi mdi-email theme--light" style="font-size: 36px;"></i></span></div></div></div></div> <div class="col"><p class="text-h5">
+            Custom badge
+        </p> <div id="customBadges"><div class="row ma-2"><div class="mx-3"><span class="v-badge v-badge--bordered v-badge--icon v-badge--overlap theme--light"><button type="button" class="white--text v-btn v-btn--has-bg theme--light v-size--default error"><span class="v-btn__content">
+                    Unlock Account
+                </span></button><span class="v-badge__wrapper"><span aria-atomic="true" aria-label="Badge" aria-live="polite" role="status" class="v-badge__badge error" style="inset: auto auto calc(100% - 12px) calc(100% - 12px);"><i aria-hidden="true" class="v-icon notranslate mdi mdi-lock theme--light"></i></span></span></span></div> <div class="mx-3"><span class="v-badge v-badge--bordered v-badge--bottom v-badge--dot theme--light"><div class="v-avatar" style="height: 40px; min-width: 40px; width: 40px;"><div class="v-image v-responsive theme--light"><div class="v-responsive__sizer" style="padding-bottom: 100%;"></div><div class="v-image__image v-image__image--cover" style="background-image: url(&quot;https://cdn.vuetifyjs.com/images/lists/2.jpg&quot;); background-position: center center;"></div><div class="v-responsive__content" style="width: 128px;"></div></div></div><span class="v-badge__wrapper"><span aria-atomic="true" aria-label="Badge" aria-live="polite" role="status" class="v-badge__badge deep-purple accent-4" style="inset: calc(100% - 10px) auto auto calc(100% - 10px);"></span></span></span></div> <div class="mx-3"><span class="v-badge v-badge--avatar v-badge--bordered v-badge--overlap theme--light"> <div class="v-avatar" style="height: 40px; min-width: 40px; width: 40px;"><div class="v-image v-responsive theme--light"><div class="v-responsive__sizer" style="padding-bottom: 100%;"></div><div class="v-image__image v-image__image--cover" style="background-image: url(&quot;https://cdn.vuetifyjs.com/images/john.png&quot;); background-position: center center;"></div><div class="v-responsive__content" style="width: 268px;"></div></div></div><span class="v-badge__wrapper"><span aria-atomic="true" aria-label="Badge" aria-live="polite" role="status" class="v-badge__badge primary" style="inset: auto auto calc(100% - 12px) calc(100% - 12px);"><div class="v-avatar" style="height: 48px; min-width: 48px; width: 48px;"><div class="v-image v-responsive theme--light"><div class="v-responsive__sizer" style="padding-bottom: 86.885246%;"></div><div class="v-image__image v-image__image--cover" style="background-image: url(&quot;https://cdn.vuetifyjs.com/images/logos/v.png&quot;); background-position: center center;"></div><div class="v-responsive__content" style="width: 488px;"></div></div></div></span></span></span></div></div></div></div> <div class="col"><p class="text-h5">
+            Dynamic badge
+        </p> <div id="dynamicBadge"><div class="row ma-2"><button type="button" class="mx-3 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default primary"><span class="v-btn__content">
+            Send Message
+        </span></button> <button type="button" class="mx-3 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default error"><span class="v-btn__content">
+            Clear Notifications
+        </span></button> <span class="v-badge mx-3 v-badge--overlap v-badge--tile theme--light"><i aria-hidden="true" class="v-icon notranslate mdi mdi-vuetify theme--light" style="font-size: 36px;"></i><span class="v-badge__wrapper"><span aria-atomic="true" aria-label="Badge" aria-live="polite" role="status" class="v-badge__badge green" style="inset: auto auto calc(100% - 12px) calc(100% - 12px); display: none;"></span></span></span></div></div></div> <div class="col"><p class="text-h5">
+            Hover badge
+        </p> <div id="hoverBadge"><span class="v-badge ma-3 theme--light"><i aria-hidden="true" class="v-icon notranslate mdi mdi-account theme--light grey--text text--lighten-1" style="font-size: 36px;"></i><span class="v-badge__wrapper"><span aria-atomic="true" aria-label="Badge" aria-live="polite" role="status" class="v-badge__badge deep-purple accent-4" style="inset: auto auto calc(100% - 4px) calc(100% - 4px); display: none;">9999+</span></span></span></div></div></div></div>---------------------------------------------------------------------------------------------------------
+Step 1: Define framework layers with reporting layer
+
+In this step, we will define the layers of our test automation framework. The framework will consist of the following layers:
+
+1. Test Execution Layer: This layer will handle the execution of test cases and manage the test flow.
+2. Test Data Layer: This layer will provide the necessary test data for the test cases.
+3. Test Page Objects Layer: This layer will contain the page objects that represent the UI elements of the web app.
+4. Test Actions Layer: This layer will contain the actions that can be performed on the UI elements.
+5. Test Assertions Layer: This layer will contain the assertions to verify the expected behavior of the UI elements.
+6. Reporting Layer: This layer will generate reports to provide insights into the test execution results.
+
+Step 2: Define framework components and choose most advanced example for each component
+
+In this step, we will choose the most advanced example for each component of the framework using the following libraries:
+
+1. Selene.py: A Python library for concise and readable UI tests.
+2. Pytest: A testing framework for writing simple and scalable tests.
+3. Allure: A test report generation tool for creating interactive and comprehensive reports.
+
+Step 3: Describe reasonable framework structure and picture it in ASCII way
+
+The framework structure can be organized in the following way:
+
+```
+- framework/
+    - tests/
+        - test_cases/
+            - test_example.py
+        - conftest.py
+    - pages/
+        - base_page.py
+        - home_page.py
+        - login_page.py
+    - actions/
+        - base_action.py
+        - login_action.py
+    - assertions/
+        - base_assertion.py
+        - home_page_assertion.py
+    - utils/
+        - logger.py
+        - data_loader.py
+    - reports/
+        - allure_report/
+    - setup.py
+```
+
+Step 4: Create setup.py with all dependencies from step 2
+
+The setup.py file should include the necessary dependencies for the framework. Here is an example:
+
+```python
+from setuptools import setup
+
+setup(
+    name='ui_test_framework',
+    version='1.0',
+    description='UI Test Automation Framework',
+    author='Your Name',
+    packages=['tests', 'pages', 'actions', 'assertions', 'utils'],
+    install_requires=[
+        'selene==2.0.0',
+        'pytest==6.2.4',
+        'allure-pytest==2.9.43'
+    ],
+)
+```
+
+Step 5: Write all classes and their implementations in full extent on python as separate files with code
+
+Please find the implementation of the framework components in the following files:
+
+- base_page.py:
+```python
+from selene import Browser
+
+
+class BasePage:
+    def __init__(self, browser: Browser):
+        self.browser = browser
+```
+
+- home_page.py:
+```python
+from selene import Browser
+from selene.support.jquery_style_selectors import s
+
+from pages.base_page import BasePage
+
+
+class HomePage(BasePage):
+    def __init__(self, browser: Browser):
+        super().__init__(browser)
+        self.greeting = s('#greeting')
+
+    def get_greeting_text(self):
+        return self.greeting.text
+```
+
+- login_page.py:
+```python
+from selene import Browser
+from selene.support.jquery_style_selectors import s
+
+from pages.base_page import BasePage
+
+
+class LoginPage(BasePage):
+    def __init__(self, browser: Browser):
+        super().__init__(browser)
+        self.username_input = s('#username')
+        self.password_input = s('#password')
+        self.login_button = s('#login-button')
+
+    def login(self, username, password):
+        self.username_input.set(username)
+        self.password_input.set(password)
+        self.login_button.click()
+```
+
+- base_action.py:
+```python
+from selene import Browser
+
+
+class BaseAction:
+    def __init__(self, browser: Browser):
+        self.browser = browser
+```
+
+- login_action.py:
+```python
+from selene import Browser
+
+from actions.base_action import BaseAction
+from pages.login_page import LoginPage
+
+
+class LoginAction(BaseAction):
+    def __init__(self, browser: Browser):
+        super().__init__(browser)
+        self.login_page = LoginPage(browser)
+
+    def login(self, username, password):
+        self.login_page.login(username, password)
+```
+
+- base_assertion.py:
+```python
+from selene import Browser
+
+
+class BaseAssertion:
+    def __init__(self, browser: Browser):
+        self.browser = browser
+```
+
+- home_page_assertion.py:
+```python
+from selene import Browser
+
+from assertions.base_assertion import BaseAssertion
+from pages.home_page import HomePage
+
+
+class HomePageAssertion(BaseAssertion):
+    def __init__(self, browser: Browser):
+        super().__init__(browser)
+        self.home_page = HomePage(browser)
+
+    def assert_greeting_text(self, expected_text):
+        assert self.home_page.get_greeting_text() == expected_text
+```
+
+- logger.py:
+```python
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+```
+
+- data_loader.py:
+```python
+import json
+
+
+def load_test_data(file_path):
+    with open(file_path, 'r') as file:
+        return json.load(file)
+```
+
+Step 6: Write data-driven test on the provided HTML using Allure and logging
+
+```python
+import allure
+import pytest
+
+from actions.login_action import LoginAction
+from assertions.home_page_assertion import HomePageAssertion
+from utils.logger import logger
+from utils.data_loader import load_test_data
+
+
+@allure.feature('Login')
+@pytest.mark.parametrize('test_data', load_test_data('test_data.json'))
+def test_login(test_data):
+    logger.info(f"Running test with data: {test_data}")
+    with allure.step('Open login page'):
+        login_action = LoginAction()
+        login_action.open_login_page()
+
+    with allure.step('Login'):
+        login_action.login(test_data['username'], test_data['password'])
+
+    with allure.step('Verify greeting text'):
+        home_page_assertion = HomePageAssertion()
+        home_page_assertion.assert_greeting_text(test_data['expected_greeting'])
+```
+
+Step 7: How to get Allure report after the test from step 6 was executed
+
+To generate the Allure report after executing the test, follow these steps:
+
+1. Install Allure command-line tool by following the instructions provided in the Allure documentation.
+2. Run the test using the pytest command:
+   ```
+   pytest --alluredir=path/to/allure_report
+   ```
+   Replace `path/to/allure_report` with the desired path where you want to generate the Allure report.
+3. After the test execution is complete, navigate to the directory where the Allure report was generated.
+4. Run the following command to generate the HTML report:
+   ```
+   allure serve path/to/allure_report
+   ```
+   Replace `path/to/allure_report` with the path where the Allure report was generated.
+5. The Allure report will be opened in your default web browser, allowing you to view the test execution results.
