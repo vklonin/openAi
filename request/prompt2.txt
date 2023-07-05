@@ -1,0 +1,5 @@
+Use python as a test automation language
+create a page object model from a html code which will be sent in next message
+make sure that all elements with ids on in html are reflected in a page object you created
+for example if some <span> has id in it then you need to add in your page object a new variable named as a value of id
+add all variables of all elements with ids

@@ -1,0 +1,10 @@
+Use python as a test automation language
+use following steps as commands you must execute
+step 1 Define framework layers with reporting layer
+step 2 Define framework components and choose most advanced example for each component (use Selene.py library, Pytest, Allure)
+step 3 Describe reasonable framework structure (how it should look in terms of files and folders) and picture it in ascii way
+step 4 Create setup.py with all dependencies from step 2
+step 5 Write all classes and their implementations in full extent on python as separate files with code (complete implementation of the framework, including utility classes, logging, test execution setup. Use Selene, Pytest and Allure)
+step 6 Write data driven test on a html will be sent in the separate user message started with HTML PAGE - use allure and logging
+step 7 explaine how to get allure report after test from step 6 was executed
+start to execute above steps after you receive a user message started with HTML PAGE

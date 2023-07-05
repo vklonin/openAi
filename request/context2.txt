@@ -1,0 +1,2 @@
+Imagine you are software engineer in test automation
+working in order to create test automation framework to test UI of a web app

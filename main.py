@@ -9,37 +9,41 @@ from chat_manager import ChatManager
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
-context = "Imagine you are software engineer \n"
-context += "working in order to create test automation framework to test UI of a mobile app \n"
+request_id = 1
 
-prompt = "Imagine you are software engineer \n"
-prompt += "working in order to create test automation framework to test UI of a mobile app \n"
-prompt += "Use java as a test automation language \n"
-prompt += "1 Define framework layers \n"
-prompt += "2 Define framework components and choose most advanced example for each component (but use Junit 5 as a runner) \n"
-prompt += "3 Describe reasonable framework structure (how it should look in terms of files and folders) and picture it in ascii way\n"
-prompt += "4 Create pom.xml \n"
-prompt += "5 Write all classes (Java files), you stipulated on a 3rd step using chosen on 4th step dependencies and simple test for mobile app\n"
+with open(f'request/context{request_id}.txt', 'r') as file:
+    context = file.read()
+
+with open(f'request/prompt{request_id}.txt', 'r') as file:
+    prompt = file.read()
+
+with open(f'request/payload{request_id}.txt', 'r') as file:
+    payload = file.read()
+
 
 if __name__ == "__main__":
     chat_manager = ChatManager()
     chat_manager.add_system_message(context)
     chat_manager.add_user_message(prompt)
+    chat_manager.add_user_message(payload)
 
     handler = OpenAiApiHandler(OPENAI_API_KEY)
     response = handler.generate_chat_response(chat_manager.get_messages())
     processed_response = ResultProcessor.process_response(response)
 
+    print(context)
     print(prompt)
-    print('---------------------------------------------------------------------------------------------------------')
+    print(payload)
+    print('---------------------------------------------------------------------------------------------------------\n')
     print(processed_response)
 
     current_datetime = datetime.datetime.now()
-    filename = current_datetime.strftime("%Y-%m-%d_%H-%M-%S.txt")
+    filename = current_datetime.strftime("output/%Y-%m-%d_%H-%M-%S.txt")
 
     file = open(filename, 'w')
-    file.write(context)
-    file.write(prompt)
-    file.write('---------------------------------------------------------------------------------------------------------')
+    file.write("context " + context)
+    file.write("prompt " + prompt)
+    file.write("payload " + payload)
+    file.write('---------------------------------------------------------------------------------------------------------\n')
     file.write(processed_response)
     file.close()
