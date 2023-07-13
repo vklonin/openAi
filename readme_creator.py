@@ -34,6 +34,16 @@ generate a README.MD file:
 - explain what service is for (based on a content of files), for each files make 2 or 3 sentences 
 - write how to start it
 
+use following structure for README.MD
+
+Introduction
+
+Getting Started
+
+Description
+
+Contacts
+
 """
 
 
