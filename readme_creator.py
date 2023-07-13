@@ -8,31 +8,31 @@ Generate a description of file: straight - what code in this file is doing in 3 
 """
 
 PROMPT_PROJECT_DESCR = """
-You will receive a file's content as a text - it is utils writen in java and groovy.
+You will receive a file's content as a text - it is a repository of some kind of service related to chess data processing.
 Information presented in the json following form:
 
-{
-    "jenkins-pipeline": {
-        "vars": {
-            "msTeamsRegressionTestsNotification.groovy": {
-                "content": "def call(Map args) {\n    def requestTemplate = libraryResource }",
-            },
+    "analysis": {
+        "analyzer.js": {
+            "content": "const analysisQueue = require('./analysis-queue');\nconst converter = require('../converter');\nconst depthSelector = require('./depth-selector');\nconst pgnAnalyzer = require('./pgn-analyzer');\n\nlet ricpaClient;\nlet pingUrl;\n\nfunction analyze(item) {\n  if(ricpaClient) {\n    if(pgnAnalyzer.areMovesWithinLimit(item.moves)) {\n      item.pingUrl = pingUrl;\n      console.log(`POST '${item.fen}' w/ depth ${item.depth} to ${ricpaClient.config.fullpath}`);\n      ricpaClient.postFen(item);\n    } else {\n      console.log(`too long pgn for opening for analysis: ${item.moves.join(',')}`);\n      analysisQueue.delete(item.fen);\n    }\n  } else {\n    console.error('set ricpaClient settings in app.config.json to analyze positions');\n  }\n}\n\nconst analyzeLater = function(moves, base, priority) {\n  return new Promise((resolve, reject) => {\n    if (moves) {\n      if (!base) reject('analyzeLater is called with moves without base');\n      try {\n        let movesList = pgnAnalyzer.splitSequentially(base, moves);\n        movesList = movesList.filter(pgnAnalyzer.areMovesWithinLimit);\n        movesList.forEach(function(moves) {\n          const queueItem = {\n            fen: converter.moves2fen(moves),\n            moves,\n            depth: depthSelector.getMinDepthRequired()\n          };\n          analysisQueue.add(queueItem, priority);\n        });\n      }\n      catch (err) {\n        reject(err);\n      }\n      resolve();\n    } else {\n      reject();\n    }\n  });\n};\n\nfunction setSettings(settings) {\n  ricpaClient = settings.ricpaClient;\n  pingUrl = settings.pingUrl;\n}\n\nmodule.exports = { analyze, analyzeLater, setSettings};\n\n"
+        },
+        "queue-serializer.js": {
+            "content": "const smartStringifier = require('smart-stringifier');\n\nmodule.exports.stringify = function(queue) {\n  return smartStringifier.stringify({q: queue});\n};\n\nmodule.exports.parse = function(str) {\n  const parsed = JSON.parse(str).q;\n  parsed[2]=[];\n  parsed[3]=[];\n  return parsed;\n};\n"
+        },
 
-where "jenkins-pipeline" - folder name
+where "analysis" - folder name
 
 and
 
-"msTeamsRegressionTestsNotification.groovy": {
-                "content": "def call(Map args) {\n    def requestTemplate = libraryResource }",
-            }
+        "analyzer.js": {
+            "content": "const analysisQueue = require('./analysis-queue');\nconst converter = require('../converter');\nconst depthSelector = require('./depth-selector');\nconst pgnAnalyzer = require('./pgn-analyzer');\n\nlet ricpaClient;\nlet pingUrl;\n\nfunction analyze(item) {\n  if(ricpaClient) {\n    if(pgnAnalyzer.areMovesWithinLimit(item.moves)) {\n      item.pingUrl = pingUrl;\n      console.log(`POST '${item.fen}' w/ depth ${item.depth} to ${ricpaClient.config.fullpath}`);\n      ricpaClient.postFen(item);\n    } else {\n      console.log(`too long pgn for opening for analysis: ${item.moves.join(',')}`);\n      analysisQueue.delete(item.fen);\n    }\n  } else {\n    console.error('set ricpaClient settings in app.config.json to analyze positions');\n  }\n}\n\nconst analyzeLater = function(moves, base, priority) {\n  return new Promise((resolve, reject) => {\n    if (moves) {\n      if (!base) reject('analyzeLater is called with moves without base');\n      try {\n        let movesList = pgnAnalyzer.splitSequentially(base, moves);\n        movesList = movesList.filter(pgnAnalyzer.areMovesWithinLimit);\n        movesList.forEach(function(moves) {\n          const queueItem = {\n            fen: converter.moves2fen(moves),\n            moves,\n            depth: depthSelector.getMinDepthRequired()\n          };\n          analysisQueue.add(queueItem, priority);\n        });\n      }\n      catch (err) {\n        reject(err);\n      }\n      resolve();\n    } else {\n      reject();\n    }\n  });\n};\n\nfunction setSettings(settings) {\n  ricpaClient = settings.ricpaClient;\n  pingUrl = settings.pingUrl;\n}\n\nmodule.exports = { analyze, analyzeLater, setSettings};\n\n"
+        },
             
 is a file in a folder with is content
 
 folders may contain another folders with files. 
 generate a README.MD file:
- Name utils based on a content of all files.
- Describe the meaning of each file. 
- At the bottom of a MD file write a conclusion about a utils in this folder.
+- explain what service is for (based on a content of files), for each files make 2 or 3 sentences 
+- write how to start it
 
 """
 
@@ -43,7 +43,7 @@ def create_folder_structure(path, folder_structure):
             continue
         if item.is_file():
             file_extension = os.path.splitext(item.name)[1]
-            if file_extension.lower() in ('.java', '.groovy'):
+            if file_extension.lower() in ('.java', '.groovy', '.js'):
                 with open(item.path, 'r', encoding='utf-8') as file:
                     file_content = file.read()
                     # file_description = get_file_description(PROMPT_FILE_DESCR, file_content)
@@ -73,8 +73,8 @@ def process_json_file(output_file_in,folder):
         file.write(res)
 
 
-folder = "rest-assured-extensions"
-path = f'/Users/vladimirklonin/IdeaProjects/SPARK/test-commons/{folder}'
+folder = ""
+path = f'/Users/vladimirklonin/IdeaProjects/main/chegura/app/{folder}'
 output_file = f'folder_structure_{folder}.json'
 create_json_file(path, output_file)
 process_json_file(output_file, folder)
